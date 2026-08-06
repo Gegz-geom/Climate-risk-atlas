@@ -1,0 +1,1634 @@
+{
+  "league": "MLB",
+  "hazardFields": [
+    "Extreme Heat",
+    "Deep Freeze",
+    "Air Quality",
+    "Wildfire Risk",
+    "Flood Risk",
+    "Storm Risk",
+    "Drought Risk"
+  ],
+  "teams": [
+    {
+      "franchise": "Athletics (Las Vegas)",
+      "facility": "New Las Vegas Stadium",
+      "city": "Las Vegas",
+      "country": "USA",
+      "lat": 36.1085,
+      "lon": -115.1731,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 3
+    },
+    {
+      "franchise": "Arizona Diamondbacks",
+      "facility": "Chase Field",
+      "city": "Phoenix",
+      "country": "USA",
+      "lat": 33.4453,
+      "lon": -112.0667,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 4
+    },
+    {
+      "franchise": "Atlanta Braves",
+      "facility": "Truist Park",
+      "city": "Atlanta",
+      "country": "USA",
+      "lat": 33.8908,
+      "lon": -84.4678,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "Baltimore Orioles",
+      "facility": "Oriole Park",
+      "city": "Baltimore",
+      "country": "USA",
+      "lat": 39.2838,
+      "lon": -76.6217,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "Boston Red Sox",
+      "facility": "Fenway Park",
+      "city": "Boston",
+      "country": "USA",
+      "lat": 42.3467,
+      "lon": -71.0972,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 3
+    },
+    {
+      "franchise": "Chicago Cubs",
+      "facility": "Wrigley Field",
+      "city": "Chicago",
+      "country": "USA",
+      "lat": 41.9484,
+      "lon": -87.6553,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "Chicago White Sox",
+      "facility": "Guaranteed Rate Field",
+      "city": "Chicago",
+      "country": "USA",
+      "lat": 41.8299,
+      "lon": -87.6338,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "Cincinnati Reds",
+      "facility": "Great American Ball Park",
+      "city": "Cincinnati",
+      "country": "USA",
+      "lat": 39.0979,
+      "lon": -84.5066,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "Cleveland Guardians",
+      "facility": "Progressive Field",
+      "city": "Cleveland",
+      "country": "USA",
+      "lat": 41.4962,
+      "lon": -81.6852,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        }
+      ],
+      "peakRisk": "Moderate",
+      "hazardCount": 1
+    },
+    {
+      "franchise": "Colorado Rockies",
+      "facility": "Coors Field",
+      "city": "Denver",
+      "country": "USA",
+      "lat": 39.7559,
+      "lon": -104.9942,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "Detroit Tigers",
+      "facility": "Comerica Park",
+      "city": "Detroit",
+      "country": "USA",
+      "lat": 42.339,
+      "lon": -83.0485,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "Moderate",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "Houston Astros",
+      "facility": "Daikin Park",
+      "city": "Houston",
+      "country": "USA",
+      "lat": 29.757,
+      "lon": -95.3555,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 4
+    },
+    {
+      "franchise": "Kansas City Royals",
+      "facility": "Kauffman Stadium",
+      "city": "Kansas City",
+      "country": "USA",
+      "lat": 39.0517,
+      "lon": -94.4803,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "Los Angeles Angels",
+      "facility": "Angel Stadium",
+      "city": "Anaheim",
+      "country": "USA",
+      "lat": 33.8003,
+      "lon": -117.8827,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 5
+    },
+    {
+      "franchise": "Los Angeles Dodgers",
+      "facility": "Dodger Stadium",
+      "city": "Los Angeles",
+      "country": "USA",
+      "lat": 34.0739,
+      "lon": -118.24,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 4
+    },
+    {
+      "franchise": "Miami Marlins",
+      "facility": "LoanDepot Park",
+      "city": "Miami",
+      "country": "USA",
+      "lat": 25.7781,
+      "lon": -80.2196,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 4
+    },
+    {
+      "franchise": "Milwaukee Brewers",
+      "facility": "American Family Field",
+      "city": "Milwaukee",
+      "country": "USA",
+      "lat": 43.028,
+      "lon": -87.9712,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "Minnesota Twins",
+      "facility": "Target Field",
+      "city": "Minneapolis",
+      "country": "USA",
+      "lat": 44.9817,
+      "lon": -93.2776,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "New York Mets",
+      "facility": "Citi Field",
+      "city": "New York",
+      "country": "USA",
+      "lat": 40.7571,
+      "lon": -73.8458,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 3
+    },
+    {
+      "franchise": "New York Yankees",
+      "facility": "Yankee Stadium",
+      "city": "New York",
+      "country": "USA",
+      "lat": 40.8296,
+      "lon": -73.9262,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "Philadelphia Phillies",
+      "facility": "Citizens Bank Park",
+      "city": "Philadelphia",
+      "country": "USA",
+      "lat": 39.9061,
+      "lon": -75.1665,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "Pittsburgh Pirates",
+      "facility": "PNC Park",
+      "city": "Pittsburgh",
+      "country": "USA",
+      "lat": 40.4469,
+      "lon": -80.0057,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 3
+    },
+    {
+      "franchise": "San Diego Padres",
+      "facility": "Petco Park",
+      "city": "San Diego",
+      "country": "USA",
+      "lat": 32.7073,
+      "lon": -117.1566,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "Moderate",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "San Francisco Giants",
+      "facility": "Oracle Park",
+      "city": "San Francisco",
+      "country": "USA",
+      "lat": 37.7786,
+      "lon": -122.3893,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 1
+    },
+    {
+      "franchise": "Seattle Mariners",
+      "facility": "T-Mobile Park",
+      "city": "Seattle",
+      "country": "USA",
+      "lat": 47.5914,
+      "lon": -122.3325,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "Moderate",
+      "hazardCount": 1
+    },
+    {
+      "franchise": "St. Louis Cardinals",
+      "facility": "Busch Stadium",
+      "city": "St. Louis",
+      "country": "USA",
+      "lat": 38.6226,
+      "lon": -90.1928,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "Tampa Bay Rays",
+      "facility": "Tropicana Field",
+      "city": "St. Petersburg",
+      "country": "USA",
+      "lat": 27.7683,
+      "lon": -82.6534,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 3
+    },
+    {
+      "franchise": "Texas Rangers",
+      "facility": "Globe Life Field",
+      "city": "Arlington",
+      "country": "USA",
+      "lat": 32.7473,
+      "lon": -97.0842,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 3
+    },
+    {
+      "franchise": "Toronto Blue Jays",
+      "facility": "Rogers Centre",
+      "city": "Toronto",
+      "country": "Canada",
+      "lat": 43.6414,
+      "lon": -79.3894,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        }
+      ],
+      "peakRisk": "Moderate",
+      "hazardCount": 2
+    },
+    {
+      "franchise": "Washington Nationals",
+      "facility": "Nationals Park",
+      "city": "Washington",
+      "country": "USA",
+      "lat": 38.873,
+      "lon": -77.0074,
+      "hazards": [
+        {
+          "name": "Extreme Heat",
+          "level": "High",
+          "score": 3,
+          "color": "#c23b3b"
+        },
+        {
+          "name": "Deep Freeze",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Air Quality",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Wildfire Risk",
+          "level": "Negligible",
+          "score": 0,
+          "color": "#3fae7a"
+        },
+        {
+          "name": "Flood Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Storm Risk",
+          "level": "Low",
+          "score": 1,
+          "color": "#e8b84b"
+        },
+        {
+          "name": "Drought Risk",
+          "level": "Moderate",
+          "score": 2,
+          "color": "#e8823d"
+        }
+      ],
+      "peakRisk": "High",
+      "hazardCount": 2
+    }
+  ]
+}

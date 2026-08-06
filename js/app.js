@@ -1,0 +1,453 @@
+/* ============================================================
+   CLIMATE RISK ATLAS — application logic
+   ============================================================ */
+
+mapboxgl.accessToken = "pk.eyJ1IjoiZW5naW5lZXJnZWd6IiwiYSI6ImNtb3gxcXpjczAyMnQyc3M5eW54N3JkNm4ifQ.x-d5Z72lb93DhW4JrosplA";
+
+const RISK_COLOR = {
+  "Negligible": "#3fae7a",
+  "Low": "#e8b84b",
+  "Moderate": "#e8823d",
+  "High": "#c23b3b"
+};
+const HAZARD_ICON = {
+  "Extreme Heat": "☀", "Deep Freeze": "❄", "Air Quality": "≈",
+  "Wildfire Risk": "▲", "Flood Risk": "≋", "Storm Risk": "◈", "Drought Risk": "○"
+};
+
+const state = {
+  league: "NBA",
+  allData: {},
+  activeHazards: new Set(),   // hazard field names active for current league
+  threshold: "all",           // 'all' | '1' | '2' | '3'
+  minHazards: "1",            // '1' | '2' | '3'
+  view: "2d",
+  basemap: "light",
+  markers: [],
+  openPopup: null,
+};
+
+const STYLE_LIGHT = "mapbox://styles/mapbox/light-v11";
+const STYLE_SAT = "mapbox://styles/mapbox/satellite-streets-v12";
+
+// ---------------------------------------------------------------
+// MAP INIT
+// ---------------------------------------------------------------
+const map = new mapboxgl.Map({
+  container: "map",
+  style: STYLE_LIGHT,
+  center: [-97, 40],
+  zoom: 3.35,
+  pitch: 0,
+  bearing: 0,
+  attributionControl: true,
+  antialias: true
+});
+map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), "top-right");
+
+map.on("load", () => {
+  addTerrainAndBuildings();
+  boot();
+});
+
+function addTerrainAndBuildings() {
+  try {
+    if (!map.getSource("mapbox-dem")) {
+      map.addSource("mapbox-dem", {
+        type: "raster-dem",
+        url: "mapbox://mapbox.mapbox-terrain-dem-v1",
+        tileSize: 512,
+        maxzoom: 14
+      });
+    }
+  } catch (e) { /* noop */ }
+  add3DBuildingsLayer();
+}
+
+function add3DBuildingsLayer() {
+  if (map.getLayer("3d-buildings")) return;
+  const layers = map.getStyle().layers;
+  let labelLayerId;
+  for (const l of layers) {
+    if (l.type === "symbol" && l.layout && l.layout["text-field"]) { labelLayerId = l.id; break; }
+  }
+  if (!map.getSource("composite")) return;
+  try {
+    map.addLayer({
+      id: "3d-buildings",
+      source: "composite",
+      "source-layer": "building",
+      filter: ["==", "extrude", "true"],
+      type: "fill-extrusion",
+      minzoom: 12,
+      paint: {
+        "fill-extrusion-color": "#232a31",
+        "fill-extrusion-height": ["get", "height"],
+        "fill-extrusion-base": ["get", "min_height"],
+        "fill-extrusion-opacity": 0.55
+      }
+    }, labelLayerId);
+  } catch (e) { /* style may not have composite building layer, e.g. satellite */ }
+}
+
+// ---------------------------------------------------------------
+// BOOT
+// ---------------------------------------------------------------
+async function boot() {
+  state.allData = await DataLoader.loadAll();
+  buildLeagueChips();
+  setLeague(state.league);
+  bindControls();
+}
+
+// ---------------------------------------------------------------
+// LEAGUE / HAZARD CHIPS
+// ---------------------------------------------------------------
+function buildLeagueChips() {
+  const wrap = document.getElementById("leagueChips");
+  wrap.innerHTML = "";
+  LEAGUES.forEach(lg => {
+    const b = document.createElement("button");
+    b.className = "chip" + (lg === state.league ? " active" : "");
+    b.textContent = lg;
+    b.dataset.league = lg;
+    b.addEventListener("click", () => setLeague(lg));
+    wrap.appendChild(b);
+  });
+}
+
+function buildHazardChips() {
+  const wrap = document.getElementById("hazardChips");
+  wrap.innerHTML = "";
+  const fields = state.allData[state.league].hazardFields;
+
+  const allChip = document.createElement("button");
+  allChip.className = "chip active";
+  allChip.textContent = "All";
+  allChip.addEventListener("click", () => {
+    state.activeHazards = new Set(fields);
+    refreshHazardChipStates();
+    render();
+  });
+  wrap.appendChild(allChip);
+
+  fields.forEach(h => {
+    const b = document.createElement("button");
+    b.className = "chip active";
+    b.dataset.hazard = h;
+    b.innerHTML = `<span class="dot" style="background:${hazardDotColor(h)}"></span>${h}`;
+    b.addEventListener("click", () => {
+      if (state.activeHazards.has(h)) state.activeHazards.delete(h);
+      else state.activeHazards.add(h);
+      refreshHazardChipStates();
+      render();
+    });
+    wrap.appendChild(b);
+  });
+}
+
+function hazardDotColor(h) {
+  const palette = {
+    "Extreme Heat": "#e07a3f", "Deep Freeze": "#6fb8e8", "Air Quality": "#b08fd8",
+    "Wildfire Risk": "#e8823d", "Flood Risk": "#4f9fd8", "Storm Risk": "#8f8fe8",
+    "Drought Risk": "#c2a23b"
+  };
+  return palette[h] || "#8a8f96";
+}
+
+function refreshHazardChipStates() {
+  const wrap = document.getElementById("hazardChips");
+  const fields = state.allData[state.league].hazardFields;
+  const chips = [...wrap.querySelectorAll(".chip")];
+  const allActive = state.activeHazards.size === fields.length;
+  chips[0].classList.toggle("active", allActive);
+  chips.slice(1).forEach(c => {
+    c.classList.toggle("active", state.activeHazards.has(c.dataset.hazard));
+  });
+}
+
+function setLeague(lg) {
+  state.league = lg;
+  state.activeHazards = new Set(state.allData[lg].hazardFields);
+  [...document.getElementById("leagueChips").children].forEach(c =>
+    c.classList.toggle("active", c.dataset.league === lg)
+  );
+  buildHazardChips();
+  document.getElementById("drawerTitle").textContent = `${lg} Venues`;
+  render();
+}
+
+// ---------------------------------------------------------------
+// CONTROLS
+// ---------------------------------------------------------------
+function bindControls() {
+  segButtons("thresholdSeg", v => { state.threshold = v; render(); });
+  segButtons("minHazardSeg", v => { state.minHazards = v; render(); });
+  segButtons("viewSeg", v => { state.view = v; applyView(); });
+  segButtons("basemapSeg", v => { state.basemap = v; applyBasemap(); });
+
+  document.getElementById("btnMenu").addEventListener("click", () => {
+    document.getElementById("controlRail").classList.toggle("open");
+  });
+  document.getElementById("btnHazardList").addEventListener("click", () => {
+    document.getElementById("venueDrawer").classList.toggle("open");
+  });
+  document.getElementById("closeDrawer").addEventListener("click", () => {
+    document.getElementById("venueDrawer").classList.remove("open");
+  });
+  document.getElementById("btnExportPNG").addEventListener("click", exportPNG);
+  document.getElementById("btnExportData").addEventListener("click", exportData);
+
+  map.on("move", updateZoomCaption);
+  updateZoomCaption();
+}
+
+function segButtons(id, cb) {
+  const el = document.getElementById(id);
+  [...el.children].forEach(btn => {
+    btn.addEventListener("click", () => {
+      [...el.children].forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      cb(btn.dataset.val);
+    });
+  });
+}
+
+function updateZoomCaption() {
+  const c = map.getCenter();
+  document.getElementById("zoomCaption").textContent =
+    `${c.lat.toFixed(2)}°, ${c.lng.toFixed(2)}°  ·  z${map.getZoom().toFixed(1)}  ·  ${state.view.toUpperCase()}`;
+}
+
+function applyView() {
+  if (state.view === "3d") {
+    map.easeTo({ pitch: 55, bearing: -12, duration: 900 });
+  } else {
+    map.easeTo({ pitch: 0, bearing: 0, duration: 900 });
+  }
+  render();
+}
+
+function applyBasemap() {
+  const target = state.basemap === "satellite" ? STYLE_SAT : STYLE_LIGHT;
+  map.setStyle(target);
+  map.once("style.load", () => {
+    addTerrainAndBuildings();
+    render();
+  });
+}
+
+// ---------------------------------------------------------------
+// FILTER LOGIC
+// ---------------------------------------------------------------
+function thresholdValue() {
+  if (state.threshold === "all") return 0;
+  return parseInt(state.threshold, 10);
+}
+
+function qualifyingCount(team) {
+  const th = thresholdValue();
+  const exactHigh = state.threshold === "3";
+  let n = 0;
+  team.hazards.forEach(h => {
+    if (!state.activeHazards.has(h.name)) return;
+    if (exactHigh) { if (h.score >= 3) n++; }
+    else { if (h.score >= th) n++; }
+  });
+  return n;
+}
+
+function meetsFilter(team) {
+  return qualifyingCount(team) >= parseInt(state.minHazards, 10);
+}
+
+// ---------------------------------------------------------------
+// RENDER MARKERS + POPUPS
+// ---------------------------------------------------------------
+function clearMarkers() {
+  state.markers.forEach(m => m.remove());
+  state.markers = [];
+}
+
+function render() {
+  clearMarkers();
+  const data = state.allData[state.league];
+  if (!data) return;
+
+  let shown = 0;
+  data.teams.forEach(team => {
+    if (team.lat === 0 && team.lon === 0) return;
+    const ok = meetsFilter(team);
+    if (ok) shown++;
+    const el = buildMarkerEl(team, ok);
+    const marker = new mapboxgl.Marker({ element: el, anchor: "bottom" })
+      .setLngLat([team.lon, team.lat])
+      .addTo(map);
+    el.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openPopup(team);
+    });
+    state.markers.push(marker);
+  });
+
+  renderDrawer();
+  updateLegendStatus(shown, data.teams.length);
+  updateZoomCaption();
+}
+
+function buildMarkerEl(team, isActive) {
+  const el = document.createElement("div");
+  el.className = "risk-marker" + (isActive ? "" : " dimmed");
+
+  const stack = document.createElement("div");
+  stack.className = "stack";
+  stack.style.position = "relative";
+
+  const bars = document.createElement("div");
+  bars.className = "bars";
+
+  const visibleHazards = team.hazards.filter(h => state.activeHazards.has(h.name));
+  const maxH = 34;
+  visibleHazards.forEach(h => {
+    const bar = document.createElement("div");
+    bar.className = "bar";
+    const heightPx = 4 + (h.score / 3) * (maxH - 4);
+    bar.style.height = heightPx + "px";
+    bar.style.background = RISK_COLOR[h.level] || "#666";
+    bars.appendChild(bar);
+  });
+
+  const dot = document.createElement("div");
+  dot.className = "base-dot";
+
+  stack.appendChild(bars);
+  stack.appendChild(dot);
+
+  if (isActive) {
+    const qc = qualifyingCount(team);
+    if (qc > 0) {
+      const badge = document.createElement("div");
+      badge.className = "count-badge";
+      badge.textContent = qc;
+      stack.appendChild(badge);
+    }
+  }
+
+  el.appendChild(stack);
+  return el;
+}
+
+function updateLegendStatus(shown, total) {
+  const hazardLabel = state.activeHazards.size === state.allData[state.league].hazardFields.length
+    ? "All hazards" : `${state.activeHazards.size} hazard${state.activeHazards.size === 1 ? "" : "s"}`;
+  document.getElementById("legendStatus").textContent =
+    `Showing: ${state.league} — ${hazardLabel} · ${shown}/${total} venues`;
+}
+
+// ---------------------------------------------------------------
+// POPUP
+// ---------------------------------------------------------------
+function openPopup(team) {
+  if (state.openPopup) state.openPopup.remove();
+
+  const node = document.createElement("div");
+  node.className = "popup-card";
+
+  const peakColor = RISK_COLOR[team.peakRisk] || "#999";
+
+  node.innerHTML = `
+    <div class="popup-head">
+      <div class="popup-league">${state.league}</div>
+      <div class="popup-franchise">${team.franchise}</div>
+      <div class="popup-facility">${team.facility} · ${team.city}</div>
+      <div class="popup-peak" style="background:${peakColor}22; color:${peakColor}">
+        <i style="background:${peakColor}"></i>Peak Risk: ${team.peakRisk}
+      </div>
+    </div>
+    <div class="popup-hazards">
+      ${team.hazards.map(h => `
+        <div class="popup-hazard-row">
+          <div class="popup-hazard-label">${h.name}</div>
+          <div class="popup-hazard-track"><div class="popup-hazard-fill" style="width:${(h.score/3)*100}%; background:${RISK_COLOR[h.level]}"></div></div>
+          <div class="popup-hazard-value" style="color:${RISK_COLOR[h.level]}">${h.level}</div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+
+  state.openPopup = new mapboxgl.Popup({ offset: 28, closeButton: true, maxWidth: "310px" })
+    .setLngLat([team.lon, team.lat])
+    .setDOMContent(node)
+    .addTo(map);
+
+  map.easeTo({ center: [team.lon, team.lat], duration: 600 });
+}
+
+// ---------------------------------------------------------------
+// DRAWER (venue list)
+// ---------------------------------------------------------------
+function renderDrawer() {
+  const list = document.getElementById("drawerList");
+  list.innerHTML = "";
+  const data = state.allData[state.league];
+  const teams = data.teams
+    .filter(meetsFilter)
+    .sort((a, b) => qualifyingCount(b) - qualifyingCount(a));
+
+  if (teams.length === 0) {
+    list.innerHTML = `<div class="drawer-empty">No venues match the current filters.</div>`;
+    return;
+  }
+
+  teams.forEach(team => {
+    const item = document.createElement("div");
+    item.className = "drawer-item";
+    const peakColor = RISK_COLOR[team.peakRisk] || "#999";
+    const tags = team.hazards
+      .filter(h => state.activeHazards.has(h.name) && h.score >= 2)
+      .map(h => `<span class="drawer-tag ${h.score >= 3 ? 'hi' : 'mod'}">${h.name} · ${h.level}</span>`)
+      .join("");
+
+    item.innerHTML = `
+      <div class="drawer-item-top">
+        <div class="drawer-item-name">${team.franchise}</div>
+        <div class="drawer-item-peak" style="background:${peakColor}22; color:${peakColor}">${team.peakRisk}</div>
+      </div>
+      <div class="drawer-item-facility">${team.facility} · ${team.city}</div>
+      <div class="drawer-item-tags">${tags}</div>
+    `;
+    item.addEventListener("click", () => {
+      openPopup(team);
+      if (window.innerWidth <= 900) document.getElementById("venueDrawer").classList.remove("open");
+    });
+    list.appendChild(item);
+  });
+}
+
+// ---------------------------------------------------------------
+// EXPORT
+// ---------------------------------------------------------------
+function exportPNG() {
+  map.once("idle", () => {
+    const link = document.createElement("a");
+    link.download = `climate-risk-atlas-${state.league.toLowerCase()}.png`;
+    link.href = map.getCanvas().toDataURL("image/png");
+    link.click();
+  });
+  map.triggerRepaint();
+}
+
+function exportData() {
+  const data = state.allData[state.league];
+  const filtered = data.teams.filter(meetsFilter);
+  const blob = new Blob([JSON.stringify({ league: state.league, filters: {
+    threshold: state.threshold, minHazards: state.minHazards,
+    activeHazards: [...state.activeHazards]
+  }, teams: filtered }, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.download = `climate-risk-atlas-${state.league.toLowerCase()}.json`;
+  link.href = url;
+  link.click();
+  URL.revokeObjectURL(url);
+}
