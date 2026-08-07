@@ -275,7 +275,7 @@ function bindSearch() {
   }
 
   function selectSearchResult(team) {
-    openPopup(team);
+    focusVenue(team);
     input.value = team.franchise;
     box.classList.remove("has-value");
     results.classList.remove("open");
@@ -527,6 +527,37 @@ function openPopup(team) {
   map.easeTo({ center: [team.lon, team.lat], duration: 600 });
 }
 
+const VENUE_FLY_ZOOM = 17.4;
+const VENUE_FLY_PITCH = 55;
+
+function focusVenue(team) {
+  const doFly = () => {
+    state.view = "3d";
+    const viewSeg = document.getElementById("viewSeg");
+    [...viewSeg.children].forEach(b => b.classList.toggle("active", b.dataset.val === "3d"));
+
+    map.flyTo({
+      center: [team.lon, team.lat],
+      zoom: VENUE_FLY_ZOOM,
+      pitch: VENUE_FLY_PITCH,
+      bearing: -18,
+      duration: 2200,
+      essential: true
+    });
+    map.once("moveend", () => openPopup(team));
+  };
+
+  if (state.basemap !== "satellite") {
+    state.basemap = "satellite";
+    const seg = document.getElementById("basemapSeg");
+    [...seg.children].forEach(b => b.classList.toggle("active", b.dataset.val === "satellite"));
+    map.setStyle(STYLE_SAT);
+    map.once("style.load", () => { addTerrainAndBuildings(); render(); doFly(); });
+  } else {
+    doFly();
+  }
+}
+
 // ---------------------------------------------------------------
 // DRAWER (venue list)
 // ---------------------------------------------------------------
@@ -561,7 +592,7 @@ function renderDrawer() {
       <div class="drawer-item-tags">${tags}</div>
     `;
     item.addEventListener("click", () => {
-      openPopup(team);
+      focusVenue(team);
       if (window.innerWidth <= 900) document.getElementById("venueDrawer").classList.remove("open");
     });
     list.appendChild(item);

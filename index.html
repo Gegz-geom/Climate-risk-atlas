@@ -34,6 +34,18 @@
         <p>Hazard exposure across North American professional sports venues</p>
       </div>
     </div>
+
+    <div class="masthead-search">
+      <div class="search-box">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="Search team or venue…" autocomplete="off" />
+        <button class="search-clear" id="searchClear" aria-label="Clear search">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
+
     <div class="masthead-actions">
       <button class="ghost-btn" id="btnExportPNG">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -54,18 +66,6 @@
   <aside class="control-rail" id="controlRail">
 
     <div class="rail-scroll">
-
-      <section class="control-group search-group">
-        <h2>Search</h2>
-        <div class="search-box">
-          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" id="searchInput" placeholder="Team or venue name…" autocomplete="off" />
-          <button class="search-clear" id="searchClear" aria-label="Clear search">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          </button>
-          <div class="search-results" id="searchResults"></div>
-        </div>
-      </section>
 
       <section class="control-group">
         <h2>League</h2>
