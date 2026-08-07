@@ -30,16 +30,18 @@ const state = {
 const STYLE_LIGHT = "mapbox://styles/mapbox/light-v11";
 const STYLE_SAT = "mapbox://styles/mapbox/satellite-streets-v12";
 
+const DEFAULT_VIEW = { center: [-97, 40], zoom: 3.35, pitch: 0, bearing: 0 };
+
 // ---------------------------------------------------------------
 // MAP INIT
 // ---------------------------------------------------------------
 const map = new mapboxgl.Map({
   container: "map",
   style: STYLE_LIGHT,
-  center: [-97, 40],
-  zoom: 3.35,
-  pitch: 0,
-  bearing: 0,
+  center: DEFAULT_VIEW.center,
+  zoom: DEFAULT_VIEW.zoom,
+  pitch: DEFAULT_VIEW.pitch,
+  bearing: DEFAULT_VIEW.bearing,
   attributionControl: true,
   antialias: true
 });
@@ -197,6 +199,7 @@ function bindControls() {
   });
   document.getElementById("btnExportPNG").addEventListener("click", exportPNG);
   document.getElementById("btnExportData").addEventListener("click", exportData);
+  document.getElementById("btnHome").addEventListener("click", resetView);
 
   map.on("move", updateZoomCaption);
   updateZoomCaption();
@@ -217,6 +220,20 @@ function updateZoomCaption() {
   const c = map.getCenter();
   document.getElementById("zoomCaption").textContent =
     `${c.lat.toFixed(2)}°, ${c.lng.toFixed(2)}°  ·  z${map.getZoom().toFixed(1)}  ·  ${state.view.toUpperCase()}`;
+}
+
+function resetView() {
+  if (state.openPopup) { state.openPopup.remove(); state.openPopup = null; }
+  state.view = "2d";
+  const seg = document.getElementById("viewSeg");
+  [...seg.children].forEach(b => b.classList.toggle("active", b.dataset.val === "2d"));
+  map.easeTo({
+    center: DEFAULT_VIEW.center,
+    zoom: DEFAULT_VIEW.zoom,
+    pitch: DEFAULT_VIEW.pitch,
+    bearing: DEFAULT_VIEW.bearing,
+    duration: 900
+  });
 }
 
 function applyView() {

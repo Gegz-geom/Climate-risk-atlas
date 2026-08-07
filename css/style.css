@@ -271,6 +271,21 @@ ul{ list-style:none; }
   pointer-events:none;
 }
 
+.home-btn{
+  position:absolute;
+  top: 110px; right: 12px;
+  width: 30px; height: 30px;
+  display:flex; align-items:center; justify-content:center;
+  background: var(--ink-900);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--paper-dim);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  z-index: 6;
+  transition: color .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease);
+}
+.home-btn:hover{ color: var(--brand); border-color: var(--brand-line); background: var(--brand-dim); }
+
 /* ===================== MARKERS (tapering spikes) ===================== */
 .risk-marker{
   cursor:pointer;
