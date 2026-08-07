@@ -2,7 +2,21 @@
    CLIMATE RISK ATLAS — application logic
    ============================================================ */
 
-mapboxgl.accessToken = "pk.eyJ1IjoiZW5naW5lZXJnZWd6IiwiYSI6ImNtb3gxcXpjczAyMnQyc3M5eW54N3JkNm4ifQ.x-d5Z72lb93DhW4JrosplA";
+mapboxgl.accessToken = "pk.eyJ1IjoiZW5naW5lZXJnZWd6IiwiYSI6ImNtb3gxeWNkdDAwbWgyenNkZDR4dzhzNGEifQ.GpTBBKsQ36-r7N1YhXAf5Q";
+
+// Escapes user/data-editable strings before they're inserted via innerHTML.
+// Data comes from CSV files anyone with repo access can edit, so this
+// prevents a stray "<script>" or "<img onerror=...>" in a franchise/venue
+// name from ever executing in a visitor's browser.
+function esc(str) {
+  if (str === undefined || str === null) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
 
 const RISK_COLOR = {
   "Negligible": "#1fd67a",
@@ -160,7 +174,7 @@ function buildHazardChips() {
     const b = document.createElement("button");
     b.className = "chip active";
     b.dataset.hazard = h;
-    b.innerHTML = `<span class="dot" style="background:${hazardDotColor(h)}"></span>${h}`;
+    b.innerHTML = `<span class="dot" style="background:${hazardDotColor(h)}"></span>${esc(h)}`;
     b.addEventListener("click", () => {
       if (state.activeHazards.has(h)) state.activeHazards.delete(h);
       else state.activeHazards.add(h);
@@ -272,8 +286,8 @@ function bindSearch() {
         const c = RISK_COLOR[t.peakRisk] || "#999";
         return `
           <div class="search-result-item${i === 0 ? ' hi' : ''}" data-idx="${i}">
-            <div class="search-result-name">${t.franchise}</div>
-            <div class="search-result-meta"><span class="peak-dot" style="background:${c}"></span>${t.facility} · ${t.city}</div>
+            <div class="search-result-name">${esc(t.franchise)}</div>
+            <div class="search-result-meta"><span class="peak-dot" style="background:${c}"></span>${esc(t.facility)} · ${esc(t.city)}</div>
           </div>`;
       }).join("");
       [...results.querySelectorAll(".search-result-item")].forEach((el, i) => {
@@ -522,19 +536,19 @@ function openPopup(team) {
 
   node.innerHTML = `
     <div class="popup-head">
-      <div class="popup-league">${state.league}</div>
-      <div class="popup-franchise">${team.franchise}</div>
-      <div class="popup-facility">${team.facility} · ${team.city}</div>
+      <div class="popup-league">${esc(state.league)}</div>
+      <div class="popup-franchise">${esc(team.franchise)}</div>
+      <div class="popup-facility">${esc(team.facility)} · ${esc(team.city)}</div>
       <div class="popup-peak" style="background:${peakColor}22; color:${peakColor}">
-        <i style="background:${peakColor}"></i>Peak Risk: ${team.peakRisk}
+        <i style="background:${peakColor}"></i>Peak Risk: ${esc(team.peakRisk)}
       </div>
     </div>
     <div class="popup-hazards">
       ${team.hazards.map(h => `
         <div class="popup-hazard-row">
-          <div class="popup-hazard-label">${h.name}</div>
+          <div class="popup-hazard-label">${esc(h.name)}</div>
           <div class="popup-hazard-track"><div class="popup-hazard-fill" style="width:${(h.score/3)*100}%; background:${RISK_COLOR[h.level]}"></div></div>
-          <div class="popup-hazard-value" style="color:${RISK_COLOR[h.level]}">${h.level}</div>
+          <div class="popup-hazard-value" style="color:${RISK_COLOR[h.level]}">${esc(h.level)}</div>
         </div>
       `).join("")}
     </div>
@@ -601,15 +615,15 @@ function renderDrawer() {
     const peakColor = RISK_COLOR[team.peakRisk] || "#999";
     const tags = team.hazards
       .filter(hazardPasses)
-      .map(h => `<span class="drawer-tag ${h.score >= 3 ? 'hi' : (h.score >= 2 ? 'mod' : 'lo')}">${h.name} · ${h.level}</span>`)
+      .map(h => `<span class="drawer-tag ${h.score >= 3 ? 'hi' : (h.score >= 2 ? 'mod' : 'lo')}">${esc(h.name)} · ${esc(h.level)}</span>`)
       .join("");
 
     item.innerHTML = `
       <div class="drawer-item-top">
-        <div class="drawer-item-name">${team.franchise}</div>
-        <div class="drawer-item-peak" style="background:${peakColor}22; color:${peakColor}">${team.peakRisk}</div>
+        <div class="drawer-item-name">${esc(team.franchise)}</div>
+        <div class="drawer-item-peak" style="background:${peakColor}22; color:${peakColor}">${esc(team.peakRisk)}</div>
       </div>
-      <div class="drawer-item-facility">${team.facility} · ${team.city}</div>
+      <div class="drawer-item-facility">${esc(team.facility)} · ${esc(team.city)}</div>
       <div class="drawer-item-tags">${tags}</div>
     `;
     item.addEventListener("click", () => {
