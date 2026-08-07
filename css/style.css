@@ -290,31 +290,28 @@ ul{ list-style:none; }
   position:relative;
 }
 
-.spike-cone{
-  width: 13px;
-  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-  transition: height .4s var(--ease), filter .18s var(--ease), opacity .2s var(--ease);
-  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6));
+.spike-cluster{
+  display:flex;
+  align-items:flex-end;
+  gap: 2px;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.55));
+  transition: filter .18s var(--ease);
 }
-.risk-marker:hover .spike-cone{
-  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.7)) brightness(1.15);
+.risk-marker:hover .spike-cluster{
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.68)) brightness(1.14);
 }
 
-.spike-base{
-  width: 15px;
-  height: 5px;
-  border-radius: 50%;
-  margin-top: -1px;
-  background: rgba(0,0,0,0.4);
-  filter: blur(1.5px);
+.mini-spike{
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  border-radius: 1px 1px 0 0;
+  transition: height .4s var(--ease);
 }
 
 .spike-shadow-pool{
-  width: 26px;
-  height: 7px;
+  height: 6px;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(0,0,0,0.38) 0%, transparent 72%);
-  margin-top: -3px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.4) 0%, transparent 72%);
+  margin-top: -2px;
 }
 
 .risk-marker.dimmed{ opacity: 0.16; }

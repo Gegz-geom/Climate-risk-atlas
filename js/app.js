@@ -310,41 +310,41 @@ function hexToRgb(hex) {
   return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
 }
 
-const MIN_SPIKE = 10;
-const MAX_SPIKE = 84;
+const MIN_SPIKE = 5;
+const MAX_SPIKE = 30;
+const SPIKE_W = 6;
+const SPIKE_GAP = 2;
 
 function buildMarkerEl(team, isActive) {
   const el = document.createElement("div");
   el.className = "risk-marker" + (isActive ? "" : " dimmed");
 
-  const stack = document.createElement("div");
-  stack.className = "spike-stack";
+  const cluster = document.createElement("div");
+  cluster.className = "spike-cluster";
 
-  const maxPossible = state.allData[state.league].hazardFields.length;
-  const qc = qualifyingCount(team);
-  const ratio = maxPossible > 0 ? qc / maxPossible : 0;
-  const heightPx = isActive
-    ? MIN_SPIKE + ratio * (MAX_SPIKE - MIN_SPIKE)
-    : MIN_SPIKE;
+  const visibleHazards = team.hazards.filter(h => state.activeHazards.has(h.name));
 
-  const color = RISK_COLOR[team.peakRisk] || "#8a8f96";
-
-  const cone = document.createElement("div");
-  cone.className = "spike-cone";
-  cone.style.height = heightPx + "px";
-  cone.style.background = spikeGradient(color);
-
-  const base = document.createElement("div");
-  base.className = "spike-base";
-  base.style.background = darken(color, 60);
+  visibleHazards.forEach(h => {
+    const spike = document.createElement("div");
+    spike.className = "mini-spike";
+    const heightPx = MIN_SPIKE + (h.score / 3) * (MAX_SPIKE - MIN_SPIKE);
+    const color = RISK_COLOR[h.level] || "#8a8f96";
+    spike.style.height = heightPx + "px";
+    spike.style.width = SPIKE_W + "px";
+    spike.style.background = spikeGradient(color);
+    cluster.appendChild(spike);
+  });
 
   const pool = document.createElement("div");
   pool.className = "spike-shadow-pool";
+  pool.style.width = Math.max(20, visibleHazards.length * (SPIKE_W + SPIKE_GAP) + 6) + "px";
 
-  stack.appendChild(cone);
-  stack.appendChild(base);
-  stack.appendChild(pool);
-  el.appendChild(stack);
+  const wrap = document.createElement("div");
+  wrap.className = "spike-stack";
+  wrap.appendChild(cluster);
+  wrap.appendChild(pool);
+
+  el.appendChild(wrap);
   return el;
 }
 
