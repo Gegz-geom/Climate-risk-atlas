@@ -322,6 +322,13 @@ ul{ list-style:none; }
   transition: height .4s var(--ease);
 }
 
+.no-match-dot{
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ink-600);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
 .spike-shadow-pool{
   height: 6px;
   border-radius: 50%;
@@ -464,6 +471,7 @@ ul{ list-style:none; }
 }
 .drawer-tag.hi{ color: var(--risk-high); border-color: rgba(255,45,61,0.4); background: rgba(255,45,61,0.1); }
 .drawer-tag.mod{ color: var(--risk-moderate); border-color: rgba(255,122,31,0.4); background: rgba(255,122,31,0.1); }
+.drawer-tag.lo{ color: var(--risk-low); border-color: rgba(255,194,60,0.4); background: rgba(255,194,60,0.1); }
 
 .drawer-empty{
   padding: 40px 20px; text-align:center; color: var(--ink-600); font-size:12.5px;

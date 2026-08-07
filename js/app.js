@@ -262,16 +262,15 @@ function thresholdValue() {
   return parseInt(state.threshold, 10);
 }
 
+function hazardPasses(h) {
+  if (!state.activeHazards.has(h.name)) return false;
+  if (state.threshold === "all") return true;
+  if (state.threshold === "3") return h.score >= 3;
+  return h.score >= thresholdValue();
+}
+
 function qualifyingCount(team) {
-  const th = thresholdValue();
-  const exactHigh = state.threshold === "3";
-  let n = 0;
-  team.hazards.forEach(h => {
-    if (!state.activeHazards.has(h.name)) return;
-    if (exactHigh) { if (h.score >= 3) n++; }
-    else { if (h.score >= th) n++; }
-  });
-  return n;
+  return team.hazards.filter(hazardPasses).length;
 }
 
 function meetsFilter(team) {
@@ -339,22 +338,28 @@ function buildMarkerEl(team, isActive) {
   const cluster = document.createElement("div");
   cluster.className = "spike-cluster";
 
-  const visibleHazards = team.hazards.filter(h => state.activeHazards.has(h.name));
+  const qualifying = team.hazards.filter(hazardPasses);
 
-  visibleHazards.forEach(h => {
-    const spike = document.createElement("div");
-    spike.className = "mini-spike";
-    const heightPx = MIN_SPIKE + (h.score / 3) * (MAX_SPIKE - MIN_SPIKE);
-    const color = RISK_COLOR[h.level] || "#8a8f96";
-    spike.style.height = heightPx + "px";
-    spike.style.width = SPIKE_W + "px";
-    spike.style.background = spikeGradient(color);
-    cluster.appendChild(spike);
-  });
+  if (qualifying.length === 0) {
+    const dot = document.createElement("div");
+    dot.className = "no-match-dot";
+    cluster.appendChild(dot);
+  } else {
+    qualifying.forEach(h => {
+      const spike = document.createElement("div");
+      spike.className = "mini-spike";
+      const heightPx = MIN_SPIKE + (h.score / 3) * (MAX_SPIKE - MIN_SPIKE);
+      const color = RISK_COLOR[h.level] || "#8a8f96";
+      spike.style.height = heightPx + "px";
+      spike.style.width = SPIKE_W + "px";
+      spike.style.background = spikeGradient(color);
+      cluster.appendChild(spike);
+    });
+  }
 
   const pool = document.createElement("div");
   pool.className = "spike-shadow-pool";
-  pool.style.width = Math.max(20, visibleHazards.length * (SPIKE_W + SPIKE_GAP) + 6) + "px";
+  pool.style.width = Math.max(14, qualifying.length * (SPIKE_W + SPIKE_GAP) + 6) + "px";
 
   const wrap = document.createElement("div");
   wrap.className = "spike-stack";
@@ -432,8 +437,8 @@ function renderDrawer() {
     item.className = "drawer-item";
     const peakColor = RISK_COLOR[team.peakRisk] || "#999";
     const tags = team.hazards
-      .filter(h => state.activeHazards.has(h.name) && h.score >= 2)
-      .map(h => `<span class="drawer-tag ${h.score >= 3 ? 'hi' : 'mod'}">${h.name} · ${h.level}</span>`)
+      .filter(hazardPasses)
+      .map(h => `<span class="drawer-tag ${h.score >= 3 ? 'hi' : (h.score >= 2 ? 'mod' : 'lo')}">${h.name} · ${h.level}</span>`)
       .join("");
 
     item.innerHTML = `
