@@ -570,13 +570,33 @@ ul{ list-style:none; }
   .ghost-btn{ padding: 8px 10px; }
   .masthead{ padding: 0 12px 0 14px; }
   .brand-text p{ display:none; }
-  .masthead-search{ max-width: 180px; margin: 0 10px; }
+  .search-toggle-btn{ display:flex; }
+  .masthead-search{
+    position: fixed;
+    top: var(--header-h);
+    left: 0; right: 0;
+    max-width: none;
+    margin: 0;
+    padding: 10px 14px;
+    background: var(--ink-900);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.35);
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity .2s var(--ease), transform .2s var(--ease);
+    z-index: 45;
+  }
+  .masthead-search.mobile-open{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
   .venue-drawer{ width: 100vw; max-width:100vw; }
 }
 
-@media (max-width: 520px){
-  .masthead-search{ max-width: 120px; }
-  .search-box input{ font-size: 11.5px; padding: 8px 28px 8px 28px; }
+@media (min-width: 901px){
+  .search-toggle-btn{ display:none !important; }
 }
 
 @media (max-width: 480px){
