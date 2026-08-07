@@ -1,0 +1,31 @@
+Franchise,Facility,City,Country,Latitude,Longitude,Extreme Heat,Deep Freeze,Air Quality,Wildfire Risk,Flood Risk,Storm Risk,Drought Risk,Peak Risk
+Athletics (Las Vegas),New Las Vegas Stadium,Las Vegas,USA,36.1085,-115.1731,Moderate,Negligible,Low,High,Low,Negligible,High,High
+Arizona Diamondbacks,Chase Field,Phoenix,USA,33.4453,-112.0667,High,Negligible,High,High,Low,Negligible,High,High
+Atlanta Braves,Truist Park,Atlanta,USA,33.8908,-84.4678,High,Negligible,Low,Low,Low,Low,High,High
+Baltimore Orioles,Oriole Park,Baltimore,USA,39.2838,-76.6217,High,Negligible,Low,Low,Low,Low,Moderate,High
+Boston Red Sox,Fenway Park,Boston,USA,42.3467,-71.0972,Moderate,Negligible,Negligible,Negligible,High,Negligible,Moderate,High
+Chicago Cubs,Wrigley Field,Chicago,USA,41.9484,-87.6553,High,Negligible,Low,Negligible,Low,Negligible,Moderate,High
+Chicago White Sox,Guaranteed Rate Field,Chicago,USA,41.8299,-87.6338,High,Negligible,Low,Negligible,Low,Negligible,Moderate,High
+Cincinnati Reds,Great American Ball Park,Cincinnati,USA,39.0979,-84.5066,High,Negligible,Low,Low,High,Negligible,Low,High
+Cleveland Guardians,Progressive Field,Cleveland,USA,41.4962,-81.6852,Moderate,Negligible,Low,Low,Low,Negligible,Low,Moderate
+Colorado Rockies,Coors Field,Denver,USA,39.7559,-104.9942,Low,Negligible,Moderate,Low,Low,Negligible,High,High
+Detroit Tigers,Comerica Park,Detroit,USA,42.339,-83.0485,Moderate,Negligible,Low,Negligible,Low,Negligible,Moderate,Moderate
+Houston Astros,Daikin Park,Houston,USA,29.757,-95.3555,High,Negligible,Moderate,Low,Low,High,High,High
+Kansas City Royals,Kauffman Stadium,Kansas City,USA,39.0517,-94.4803,High,Negligible,Low,Low,Low,Negligible,High,High
+Los Angeles Angels,Angel Stadium,Anaheim,USA,33.8003,-117.8827,Moderate,Negligible,High,High,Moderate,Negligible,High,High
+Los Angeles Dodgers,Dodger Stadium,Los Angeles,USA,34.0739,-118.24,High,Negligible,High,High,Low,Negligible,High,High
+Miami Marlins,LoanDepot Park,Miami,USA,25.7781,-80.2196,High,Negligible,Negligible,Low,High,High,Moderate,High
+Milwaukee Brewers,American Family Field,Milwaukee,USA,43.028,-87.9712,High,Negligible,Low,Negligible,Low,Negligible,Moderate,High
+Minnesota Twins,Target Field,Minneapolis,USA,44.9817,-93.2776,High,Negligible,Negligible,Negligible,Low,Negligible,Moderate,High
+New York Mets,Citi Field,New York,USA,40.7571,-73.8458,High,Negligible,Low,Negligible,High,Low,Moderate,High
+New York Yankees,Yankee Stadium,New York,USA,40.8296,-73.9262,High,Negligible,Low,Negligible,Low,Low,Moderate,High
+Philadelphia Phillies,Citizens Bank Park,Philadelphia,USA,39.9061,-75.1665,High,Negligible,Low,Negligible,Low,Low,Moderate,High
+Pittsburgh Pirates,PNC Park,Pittsburgh,USA,40.4469,-80.0057,Moderate,Negligible,Low,Negligible,High,Negligible,Moderate,High
+San Diego Padres,Petco Park,San Diego,USA,32.7073,-117.1566,Low,Negligible,Moderate,Low,Low,Negligible,Moderate,Moderate
+San Francisco Giants,Oracle Park,San Francisco,USA,37.7786,-122.3893,Low,Negligible,Negligible,Low,Low,Negligible,High,High
+Seattle Mariners,T-Mobile Park,Seattle,USA,47.5914,-122.3325,Low,Negligible,Low,Low,Low,Negligible,Moderate,Moderate
+St. Louis Cardinals,Busch Stadium,St. Louis,USA,38.6226,-90.1928,High,Negligible,Negligible,Low,Low,Negligible,Moderate,High
+Tampa Bay Rays,Tropicana Field,St. Petersburg,USA,27.7683,-82.6534,High,Negligible,Low,Negligible,Low,High,Moderate,High
+Texas Rangers,Globe Life Field,Arlington,USA,32.7473,-97.0842,High,Negligible,Moderate,Low,Low,Low,High,High
+Toronto Blue Jays,Rogers Centre,Toronto,Canada,43.6414,-79.3894,Moderate,Negligible,Low,Negligible,Moderate,Negligible,Low,Moderate
+Washington Nationals,Nationals Park,Washington,USA,38.873,-77.0074,High,Negligible,Low,Negligible,Low,Low,Moderate,High

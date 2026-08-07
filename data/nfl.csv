@@ -1,0 +1,33 @@
+Franchise,Facility,City,Country,Latitude,Longitude,Extreme Heat,Deep Freeze,Air Quality,Wildfire Risk,Flood Risk,Storm Risk,Drought Risk,Peak Risk
+Arizona Cardinals,State Farm Stadium,Glendale,USA,33.5276,-112.2626,High,Low,High,Low,Low,Negligible,High,High
+Atlanta Falcons,Mercedes-Benz Stadium,Atlanta,USA,33.7554,-84.4008,High,Moderate,Low,Low,Low,Low,Moderate,High
+Baltimore Ravens,M&T Bank Stadium,Baltimore,USA,39.278,-76.6227,Moderate,High,Low,Negligible,Low,Low,Moderate,High
+Buffalo Bills,New Highmark Stadium,Orchard Park,USA,42.7738,-78.787,Low,High,Negligible,Negligible,Low,Negligible,Moderate,High
+Carolina Panthers,Bank of America Stadium,Charlotte,USA,35.2258,-80.8528,High,Moderate,Negligible,Low,Low,Low,Moderate,High
+Chicago Bears,Soldier Field,Chicago,USA,41.8623,-87.6167,Moderate,High,Low,Negligible,Low,Negligible,Moderate,High
+Cincinnati Bengals,Paycor Stadium,Cincinnati,USA,39.0955,-84.516,High,High,Low,Low,High,Negligible,Low,High
+Cleveland Browns,Huntington Bank Field,Cleveland,USA,41.5061,-81.6995,Moderate,High,Low,Negligible,Low,Negligible,Low,High
+Dallas Cowboys,AT&T Stadium,Arlington,USA,32.7473,-97.0945,High,Low,Moderate,Low,Low,Low,High,High
+Denver Broncos,Empower Field,Denver,USA,39.7439,-105.0201,Low,High,Moderate,Low,Low,Negligible,High,High
+Detroit Lions,Ford Field,Detroit,USA,42.34,-83.0456,Moderate,High,Low,Negligible,Low,Negligible,Moderate,High
+Green Bay Packers,Lambeau Field,Green Bay,USA,44.5013,-88.0622,High,Moderate,Negligible,Low,Low,Negligible,Moderate,High
+Houston Texans,NRG Stadium,Houston,USA,29.6847,-95.4107,High,Low,Moderate,Low,Low,High,High,High
+Indianapolis Colts,Lucas Oil Stadium,Indianapolis,USA,39.7601,-86.1639,Moderate,High,Low,Negligible,Low,Negligible,Moderate,High
+Jacksonville Jaguars,EverBank Stadium,Jacksonville,USA,30.3239,-81.6373,High,Low,Negligible,Low,High,High,Moderate,High
+Kansas City Chiefs,Arrowhead Stadium,Kansas City,USA,39.0489,-94.4839,High,High,Low,Low,Low,Negligible,High,High
+Las Vegas Raiders,Allegiant Stadium,Las Vegas,USA,36.0909,-115.1833,Moderate,Low,Low,High,Low,Low,High,High
+Los Angeles Chargers,SoFi Stadium,Inglewood,USA,33.9535,-118.3392,High,Low,High,High,Low,Low,High,High
+Los Angeles Rams,SoFi Stadium,Inglewood,USA,33.9535,-118.3392,High,Low,High,High,Low,Low,High,High
+Miami Dolphins,Hard Rock Stadium,Miami Gardens,USA,25.958,-80.2389,High,Low,Negligible,High,High,High,Moderate,High
+Minnesota Vikings,U.S. Bank Stadium,Minneapolis,USA,44.9737,-93.2578,Moderate,High,Negligible,Low,Low,Low,Moderate,High
+New England Patriots,Gillette Stadium,Foxborough,USA,42.0909,-71.2643,High,High,Negligible,Low,Low,Low,Moderate,High
+New Orleans Saints,Caesars Superdome,New Orleans,USA,29.9511,-90.0812,High,Low,Negligible,Low,High,High,High,High
+New York Giants,MetLife Stadium,East Rutherford,USA,40.8135,-74.0744,High,Moderate,Low,Negligible,High,Low,Moderate,High
+New York Jets,MetLife Stadium,East Rutherford,USA,40.8135,-74.0744,High,Moderate,Low,Negligible,High,Low,Moderate,High
+Philadelphia Eagles,Lincoln Financial Field,Philadelphia,USA,39.9008,-75.1675,High,High,Low,Negligible,Low,Low,Moderate,High
+Pittsburgh Steelers,Acrisure Stadium,Pittsburgh,USA,40.4468,-80.0158,Moderate,High,Low,Negligible,Low,Negligible,Moderate,High
+San Francisco 49ers,Levi's Stadium,Santa Clara,USA,37.4033,-121.9694,Moderate,Low,Negligible,Low,Moderate,Negligible,High,High
+Seattle Seahawks,Lumen Field,Seattle,USA,47.5952,-122.3316,Low,Low,Low,Low,Low,Negligible,Moderate,Moderate
+Tampa Bay Buccaneers,Raymond James Stadium,Tampa,USA,27.9759,-82.5033,High,Low,Low,Low,Low,High,Moderate,High
+Tennessee Titans,Nissan Stadium,Nashville,USA,36.1665,-86.7713,High,Moderate,Negligible,Low,Moderate,Negligible,Moderate,High
+Washington Commanders,Northwest Stadium,Landover,USA,38.9077,-76.8645,High,Moderate,Low,Low,Low,Low,Moderate,High

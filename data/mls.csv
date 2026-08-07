@@ -1,0 +1,31 @@
+Franchise,Facility,City,Country,Latitude,Longitude,Extreme Heat,Deep Freeze,Air Quality,Wildfire Risk,Flood Risk,Storm Risk,Drought Risk,Peak Risk
+Atlanta United FC,Mercedes-Benz Stadium,Atlanta,USA,33.7554,-84.4008,High,Low,Low,Low,Low,Low,Moderate,High
+Austin FC,Q2 Stadium,Austin,USA,30.3868,-97.7195,High,Low,Negligible,High,Low,Low,High,High
+Charlotte FC,Bank of America Stadium,Charlotte,USA,35.2258,-80.8528,High,Low,Negligible,Low,Low,Low,Moderate,High
+Chicago Fire FC,Soldier Field,Chicago,USA,41.8623,-87.6167,High,High,Low,Negligible,Low,Negligible,Moderate,High
+Colorado Rapids,Dick's Sporting Goods Park,Commerce City,USA,39.8083,-104.6936,Low,High,Moderate,Low,Low,Negligible,Moderate,High
+Columbus Crew,Lower.com Field,Columbus,USA,39.9689,-83.0166,High,High,Negligible,Low,High,Negligible,Moderate,High
+D.C. United,Audi Field,Washington,USA,38.8678,-77.0121,High,Moderate,Low,Negligible,Low,Low,Moderate,High
+FC Cincinnati,TQL Stadium,Cincinnati,USA,39.1155,-84.5606,High,High,Low,Low,Low,Negligible,Low,High
+FC Dallas,Toyota Stadium,Frisco,USA,33.1538,-96.8355,High,Low,Moderate,Low,Low,Low,High,High
+Houston Dynamo FC,Shell Energy Stadium,Houston,USA,29.7524,-95.3512,High,Low,Moderate,Low,Low,High,High,High
+Inter Miami FC,Chase Stadium,Fort Lauderdale,USA,26.1949,-80.1798,High,Low,Negligible,Low,High,High,Moderate,High
+LA Galaxy,Dignity Health Sports Park,Carson,USA,33.8644,-118.2611,Low,Low,High,High,Low,Low,High,High
+Los Angeles FC,BMO Stadium,Los Angeles,USA,34.0138,-118.2851,High,Low,High,High,Low,Low,High,High
+Minnesota United FC,Allianz Field,St. Paul,USA,44.9531,-93.1652,High,High,Negligible,Negligible,Low,Negligible,Moderate,High
+Montréal CF,Saputo Stadium,Montreal,Canada,45.5615,-73.5514,Moderate,High,Low,Negligible,Moderate,Negligible,Low,High
+Nashville SC,Geodis Park,Nashville,USA,36.133,-86.7714,High,Moderate,Negligible,Low,Low,Negligible,Moderate,High
+New England Revolution,Gillette Stadium,Foxborough,USA,42.0909,-71.2643,High,High,Negligible,Low,Low,Low,Moderate,High
+New York City FC,Etihad Park,New York,USA,40.7484,-73.8459,High,Low,Low,Negligible,High,Low,Moderate,High
+New York Red Bulls,SI Stadium,Harrison,USA,40.7392,-74.1559,High,Moderate,Low,Negligible,High,Low,Moderate,High
+Orlando City SC,Inter&Co Stadium,Orlando,USA,28.5411,-81.3894,High,Low,Negligible,Low,Low,High,Moderate,High
+Philadelphia Union,Subaru Park,Chester,USA,39.8329,-75.3782,High,Moderate,Low,Negligible,High,Low,Moderate,High
+Portland Timbers,Providence Park,Portland,USA,45.5215,-122.6919,Moderate,Low,Negligible,Low,Low,Negligible,Moderate,Moderate
+Real Salt Lake,America First Field,Sandy,USA,40.5824,-111.8934,Low,High,Moderate,High,Low,Negligible,High,High
+San Diego FC,Snapdragon Stadium,San Diego,USA,32.7831,-117.1195,Moderate,Low,Moderate,High,Low,Negligible,Moderate,High
+San Jose Earthquakes,PayPal Park,San Jose,USA,37.3524,-121.9253,Low,Low,Moderate,High,Moderate,Negligible,High,High
+Seattle Sounders FC,Lumen Field,Seattle,USA,47.5952,-122.3316,Low,Low,Low,Low,Low,Negligible,Moderate,Moderate
+Sporting Kansas City,Children's Mercy Park,Kansas City,USA,39.122,-94.7635,High,High,Low,Low,Low,Negligible,High,High
+St. Louis City FC,Energizer Park,St. Louis,USA,38.6474,-90.2231,High,Moderate,Negligible,Low,Low,Negligible,Moderate,High
+Toronto FC,BMO Field,Toronto,Canada,43.6332,-79.4185,Moderate,High,Moderate,Negligible,Moderate,Negligible,Low,High
+Vancouver Whitecaps,BC Place,Vancouver,Canada,49.2768,-123.1119,Low,Moderate,Moderate,Low,Moderate,Negligible,Low,Moderate

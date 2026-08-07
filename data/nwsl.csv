@@ -1,0 +1,17 @@
+Franchise,Facility,City,Country,Latitude,Longitude,Extreme Heat,Deep Freeze,Air Quality,Wildfire Risk,Flood Risk,Storm Risk,Drought Risk,Peak Risk
+Angel City FC,BMO Stadium,Los Angeles,USA,34.0138,-118.2851,High,Low,High,High,Low,Negligible,High,High
+Bay FC,PayPal Park,San Jose,USA,37.3524,-121.9253,Low,Low,Negligible,High,Moderate,Negligible,High,High
+Boston Legacy FC,White Stadium,Boston,USA,42.3095,-71.1256,Moderate,Moderate,Negligible,Negligible,Low,Low,Moderate,Moderate
+Chicago Red Stars,SeatGeek Stadium,Bridgeview,USA,41.7503,-87.8078,High,Moderate,Low,Negligible,Low,Negligible,Moderate,High
+Denver Summit FC,Santa Fe Yards,Denver,USA,39.7092,-104.9942,Low,High,Moderate,Low,Low,Negligible,High,High
+Houston Dash,Shell Energy Stadium,Houston,USA,29.7524,-95.3512,High,Low,Moderate,Low,Low,High,High,High
+Kansas City Current,CPKC Stadium,Kansas City,USA,39.0997,-94.6142,High,Moderate,Low,Low,Moderate,Negligible,High,High
+NY/NJ Gotham FC,SI Stadium,Harrison,USA,40.7392,-74.1559,High,Moderate,Low,Negligible,High,Low,Moderate,High
+North Carolina Courage,WakeMed Soccer Park,Cary,USA,35.7915,-78.7811,High,Low,Negligible,Low,Low,Low,Moderate,High
+Orlando Pride,Inter&Co Stadium,Orlando,USA,28.5411,-81.3894,High,Low,Negligible,Low,Low,High,Moderate,High
+Portland Thorns FC,Providence Park,Portland,USA,45.5215,-122.6919,Moderate,Low,Negligible,Low,Low,Negligible,Moderate,Moderate
+Racing Louisville FC,Lynn Family Stadium,Louisville,USA,38.2749,-85.7627,High,Low,Low,Low,High,Negligible,Moderate,High
+San Diego Wave FC,Snapdragon Stadium,San Diego,USA,32.7831,-117.1195,Moderate,Low,Moderate,High,Low,Negligible,Moderate,High
+Seattle Reign FC,Lumen Field,Seattle,USA,47.5952,-122.3316,Low,Low,Low,Low,Low,Negligible,Moderate,Moderate
+Utah Royals,America First Field,Sandy,USA,40.5824,-111.8934,Low,Moderate,Moderate,High,Low,Negligible,High,High
+Washington Spirit,Audi Field,Washington,USA,38.8678,-77.0121,High,Low,Low,Negligible,Low,Low,Moderate,High

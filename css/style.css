@@ -19,14 +19,14 @@
   --paper-dim: rgba(244,241,234,0.62);
   --paper-faint: rgba(244,241,234,0.38);
 
-  --brand: #4fb787;
-  --brand-dim: rgba(79,183,135,0.16);
-  --brand-line: rgba(79,183,135,0.4);
+  --brand: #2fe3a3;
+  --brand-dim: rgba(47,227,163,0.18);
+  --brand-line: rgba(47,227,163,0.5);
 
-  --risk-negligible: #3fae7a;
-  --risk-low: #e8b84b;
-  --risk-moderate: #e8823d;
-  --risk-high: #c23b3b;
+  --risk-negligible: #1fd67a;
+  --risk-low: #ffc23c;
+  --risk-moderate: #ff7a1f;
+  --risk-high: #ff2d3d;
 
   --rail-w: 300px;
   --drawer-w: 380px;
@@ -63,7 +63,8 @@ ul{ list-style:none; }
     "head head"
     "rail main";
   background:
-    radial-gradient(ellipse 1200px 600px at 15% -10%, rgba(79,183,135,0.07), transparent 60%),
+    radial-gradient(ellipse 1200px 600px at 15% -10%, rgba(47,227,163,0.10), transparent 60%),
+    radial-gradient(ellipse 900px 500px at 85% 100%, rgba(255,122,31,0.06), transparent 60%),
     var(--ink-950);
 }
 
@@ -91,7 +92,7 @@ ul{ list-style:none; }
   font-weight:600;
   font-size: 14px;
   letter-spacing: -0.02em;
-  box-shadow: 0 4px 14px rgba(79,183,135,0.28), inset 0 1px 0 rgba(255,255,255,0.3);
+  box-shadow: 0 4px 18px rgba(47,227,163,0.45), inset 0 1px 0 rgba(255,255,255,0.35);
 }
 .brand-text h1{
   font-family: var(--font-display);
@@ -134,6 +135,7 @@ ul{ list-style:none; }
   color: var(--paper-dim);
 }
 .icon-btn:hover{ color:var(--paper); border-color:var(--brand-line); }
+.icon-btn.drawer-close{ display:flex; }
 
 /* ===================== CONTROL RAIL ===================== */
 .control-rail{
@@ -191,6 +193,7 @@ ul{ list-style:none; }
   background: var(--brand-dim);
   border-color: var(--brand-line);
   color: var(--brand);
+  box-shadow: 0 0 0 1px rgba(47,227,163,0.12), 0 2px 10px rgba(47,227,163,0.18);
 }
 .chip .dot{ width:6px; height:6px; border-radius:50%; flex-shrink:0; }
 
@@ -268,7 +271,7 @@ ul{ list-style:none; }
   pointer-events:none;
 }
 
-/* ===================== MARKERS (spikes) ===================== */
+/* ===================== MARKERS (tapering spikes) ===================== */
 .risk-marker{
   cursor:pointer;
   display:flex;
@@ -276,44 +279,46 @@ ul{ list-style:none; }
   justify-content:center;
   transform-origin: bottom center;
   will-change: transform;
+  transition: transform .18s var(--ease);
 }
-.risk-marker .bars{
-  display:flex;
-  align-items:flex-end;
-  gap: 2px;
-  filter: drop-shadow(0 3px 5px rgba(0,0,0,0.55));
-  transition: filter .15s var(--ease);
-}
-.risk-marker .bar{
-  width: 5px;
-  border-radius: 2px 2px 1px 1px;
-  transition: height .35s var(--ease);
-}
-.risk-marker .base-dot{
-  width:5px; height:5px; border-radius:50%;
-  background: var(--paper);
-  box-shadow: 0 0 0 2.5px rgba(10,12,14,0.85), 0 1px 4px rgba(0,0,0,0.6);
-  margin-top: 3px;
-}
-.risk-marker .stack{ display:flex; flex-direction:column; align-items:center; }
-.risk-marker:hover .bars{ filter: drop-shadow(0 4px 8px rgba(0,0,0,0.7)) brightness(1.12); }
-.risk-marker.dimmed{ opacity: 0.22; }
-.risk-marker.dimmed:hover{ opacity: 0.5; }
+.risk-marker:hover{ transform: scale(1.08); }
 
-.risk-marker .count-badge{
-  position:absolute;
-  top:-9px; right:-7px;
-  font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight:500;
-  color: var(--ink-950);
-  background: var(--paper);
-  min-width:14px; height:14px;
-  border-radius:7px;
-  display:flex; align-items:center; justify-content:center;
-  padding: 0 3px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+.spike-stack{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:relative;
 }
+
+.spike-cone{
+  width: 13px;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  transition: height .4s var(--ease), filter .18s var(--ease), opacity .2s var(--ease);
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6));
+}
+.risk-marker:hover .spike-cone{
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.7)) brightness(1.15);
+}
+
+.spike-base{
+  width: 15px;
+  height: 5px;
+  border-radius: 50%;
+  margin-top: -1px;
+  background: rgba(0,0,0,0.4);
+  filter: blur(1.5px);
+}
+
+.spike-shadow-pool{
+  width: 26px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.38) 0%, transparent 72%);
+  margin-top: -3px;
+}
+
+.risk-marker.dimmed{ opacity: 0.16; }
+.risk-marker.dimmed:hover{ opacity: 0.4; transform: scale(1.04); }
 
 /* ===================== POPUP ===================== */
 .mapboxgl-popup{ z-index: 20; }
@@ -445,8 +450,8 @@ ul{ list-style:none; }
   background: var(--ink-800); color: var(--paper-dim);
   border: 1px solid var(--line-soft);
 }
-.drawer-tag.hi{ color: var(--risk-high); border-color: rgba(194,59,59,0.35); background: rgba(194,59,59,0.09); }
-.drawer-tag.mod{ color: var(--risk-moderate); border-color: rgba(232,130,61,0.35); background: rgba(232,130,61,0.09); }
+.drawer-tag.hi{ color: var(--risk-high); border-color: rgba(255,45,61,0.4); background: rgba(255,45,61,0.1); }
+.drawer-tag.mod{ color: var(--risk-moderate); border-color: rgba(255,122,31,0.4); background: rgba(255,122,31,0.1); }
 
 .drawer-empty{
   padding: 40px 20px; text-align:center; color: var(--ink-600); font-size:12.5px;

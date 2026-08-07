@@ -1,0 +1,19 @@
+Franchise,Facility,City,Country,Latitude,Longitude,Extreme Heat,Deep Freeze,Air Quality,Wildfire Risk,Flood Risk,Storm Risk,Drought Risk,Peak Risk
+Atlanta Dream,Gateway Center Arena,College Park,USA,33.6469,-84.4491,High,Negligible,Low,Low,Low,Low,Negligible,High
+Chicago Sky,Wintrust Arena,Chicago,USA,41.8534,-87.6325,Moderate,Negligible,Low,Negligible,Low,Negligible,Negligible,Moderate
+Cleveland WNBA Team,TBD,Cleveland,USA,41.4993,-81.6944,Low,Negligible,Low,Negligible,Low,Negligible,Negligible,Low
+Connecticut Sun,Mohegan Sun Arena,Uncasville,USA,41.4949,-72.0982,Low,Negligible,Low,Negligible,High,Low,Negligible,High
+Dallas Wings,College Park Center,Arlington,USA,32.729,-97.1131,High,Negligible,Moderate,Low,Low,Low,Low,High
+Detroit WNBA Team,Little Caesars Arena,Detroit,USA,42.341,-83.0553,High,Negligible,Low,Negligible,High,Negligible,Negligible,High
+Golden State Valkyries,Chase Center,San Francisco,USA,37.768,-122.3877,Negligible,Negligible,Negligible,Low,High,Low,Low,High
+Indiana Fever,Gainbridge Fieldhouse,Indianapolis,USA,39.7639,-86.1555,Low,Negligible,Low,Negligible,Low,Negligible,Negligible,Low
+Las Vegas Aces,Michelob ULTRA Arena,Las Vegas,USA,36.0959,-115.1726,High,Negligible,Low,High,Low,Negligible,Low,High
+Los Angeles Sparks,Crypto.com Arena,Los Angeles,USA,34.043,-118.2673,Low,Negligible,High,High,Low,Negligible,Low,High
+Minnesota Lynx,Target Center,Minneapolis,USA,44.9795,-93.276,Moderate,Negligible,Negligible,Low,Low,Negligible,Negligible,Moderate
+New York Liberty,Barclays Center,Brooklyn,USA,40.6826,-73.9754,Moderate,Negligible,Low,Negligible,Low,Low,Negligible,Moderate
+Philadelphia WNBA Team,TBD,Philadelphia,USA,39.9526,-75.1652,High,Negligible,Low,Negligible,Low,Low,Negligible,High
+Phoenix Mercury,PHX Arena,Phoenix,USA,33.4457,-112.0712,High,Negligible,High,High,Low,Negligible,Low,High
+Portland Fire,Moda Center,Portland,USA,45.5316,-122.6668,Moderate,Negligible,Negligible,Low,Low,Negligible,Negligible,Moderate
+Seattle Storm,Climate Pledge Arena,Seattle,USA,47.6221,-122.354,Moderate,Negligible,Low,Negligible,Low,Negligible,Negligible,Moderate
+Toronto Tempo,Coca-Cola Coliseum,Toronto,Canada,43.6459,-79.3754,Moderate,Negligible,Moderate,Negligible,Moderate,Negligible,Negligible,Moderate
+Washington Mystics,CareFirst Arena,Washington,USA,38.9004,-77.0206,Moderate,Negligible,Low,Negligible,Low,Low,Negligible,Moderate

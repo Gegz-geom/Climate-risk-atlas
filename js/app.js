@@ -5,10 +5,10 @@
 mapboxgl.accessToken = "pk.eyJ1IjoiZW5naW5lZXJnZWd6IiwiYSI6ImNtb3gxcXpjczAyMnQyc3M5eW54N3JkNm4ifQ.x-d5Z72lb93DhW4JrosplA";
 
 const RISK_COLOR = {
-  "Negligible": "#3fae7a",
-  "Low": "#e8b84b",
-  "Moderate": "#e8823d",
-  "High": "#c23b3b"
+  "Negligible": "#1fd67a",
+  "Low": "#ffc23c",
+  "Moderate": "#ff7a1f",
+  "High": "#ff2d3d"
 };
 const HAZARD_ICON = {
   "Extreme Heat": "☀", "Deep Freeze": "❄", "Air Quality": "≈",
@@ -295,44 +295,55 @@ function render() {
   updateZoomCaption();
 }
 
+function spikeGradient(hex) {
+  // build a lit-from-above cone gradient from a single risk color
+  return `linear-gradient(180deg, ${lighten(hex, 38)} 0%, ${hex} 45%, ${darken(hex, 22)} 100%)`;
+}
+function lighten(hex, amt) {
+  const { r, g, b } = hexToRgb(hex);
+  return `rgb(${clamp(r + amt)}, ${clamp(g + amt)}, ${clamp(b + amt)})`;
+}
+function darken(hex, amt) { return lighten(hex, -amt); }
+function clamp(v) { return Math.max(0, Math.min(255, v)); }
+function hexToRgb(hex) {
+  const n = parseInt(hex.replace("#", ""), 16);
+  return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
+}
+
+const MIN_SPIKE = 10;
+const MAX_SPIKE = 84;
+
 function buildMarkerEl(team, isActive) {
   const el = document.createElement("div");
   el.className = "risk-marker" + (isActive ? "" : " dimmed");
 
   const stack = document.createElement("div");
-  stack.className = "stack";
-  stack.style.position = "relative";
+  stack.className = "spike-stack";
 
-  const bars = document.createElement("div");
-  bars.className = "bars";
+  const maxPossible = state.allData[state.league].hazardFields.length;
+  const qc = qualifyingCount(team);
+  const ratio = maxPossible > 0 ? qc / maxPossible : 0;
+  const heightPx = isActive
+    ? MIN_SPIKE + ratio * (MAX_SPIKE - MIN_SPIKE)
+    : MIN_SPIKE;
 
-  const visibleHazards = team.hazards.filter(h => state.activeHazards.has(h.name));
-  const maxH = 34;
-  visibleHazards.forEach(h => {
-    const bar = document.createElement("div");
-    bar.className = "bar";
-    const heightPx = 4 + (h.score / 3) * (maxH - 4);
-    bar.style.height = heightPx + "px";
-    bar.style.background = RISK_COLOR[h.level] || "#666";
-    bars.appendChild(bar);
-  });
+  const color = RISK_COLOR[team.peakRisk] || "#8a8f96";
 
-  const dot = document.createElement("div");
-  dot.className = "base-dot";
+  const cone = document.createElement("div");
+  cone.className = "spike-cone";
+  cone.style.height = heightPx + "px";
+  cone.style.background = spikeGradient(color);
 
-  stack.appendChild(bars);
-  stack.appendChild(dot);
+  const base = document.createElement("div");
+  base.className = "spike-base";
+  base.style.background = darken(color, 60);
 
-  if (isActive) {
-    const qc = qualifyingCount(team);
-    if (qc > 0) {
-      const badge = document.createElement("div");
-      badge.className = "count-badge";
-      badge.textContent = qc;
-      stack.appendChild(badge);
-    }
-  }
+  const pool = document.createElement("div");
+  pool.className = "spike-shadow-pool";
 
+  stack.appendChild(cone);
+  stack.appendChild(base);
+  stack.appendChild(pool);
   el.appendChild(stack);
   return el;
 }
@@ -440,13 +451,23 @@ function exportPNG() {
 function exportData() {
   const data = state.allData[state.league];
   const filtered = data.teams.filter(meetsFilter);
-  const blob = new Blob([JSON.stringify({ league: state.league, filters: {
-    threshold: state.threshold, minHazards: state.minHazards,
-    activeHazards: [...state.activeHazards]
-  }, teams: filtered }, null, 2)], { type: "application/json" });
+  const hazardFields = data.hazardFields;
+
+  const header = ["Franchise", "Facility", "City", "Country", "Latitude", "Longitude", ...hazardFields, "Peak Risk", "Hazard Count (Mod+High)"];
+  const rows = filtered.map(t => {
+    const hazardMap = Object.fromEntries(t.hazards.map(h => [h.name, h.level]));
+    return [
+      t.franchise, t.facility, t.city, t.country, t.lat, t.lon,
+      ...hazardFields.map(h => hazardMap[h] ?? ""),
+      t.peakRisk, qualifyingCount(t)
+    ];
+  });
+
+  const csv = Papa.unparse({ fields: header, data: rows });
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
-  link.download = `climate-risk-atlas-${state.league.toLowerCase()}.json`;
+  link.download = `climate-risk-atlas-${state.league.toLowerCase()}.csv`;
   link.href = url;
   link.click();
   URL.revokeObjectURL(url);

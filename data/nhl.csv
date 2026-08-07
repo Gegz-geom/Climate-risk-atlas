@@ -1,0 +1,33 @@
+Franchise,Facility,City,Country,Latitude,Longitude,Deep Freeze,Air Quality,Wildfire Risk,Flood Risk,Storm Risk,Drought Risk,Peak Risk
+Anaheim Ducks,Honda Center,Anaheim,USA,33.8078,-117.8765,Negligible,High,Low,Moderate,Negligible,Moderate,High
+Boston Bruins,TD Garden,Boston,USA,42.3662,-71.0621,Moderate,Negligible,Negligible,High,Low,Low,High
+Buffalo Sabres,KeyBank Center,Buffalo,USA,42.875,-78.8765,High,Negligible,Negligible,High,Negligible,Moderate,High
+Calgary Flames,Scotiabank Saddledome,Calgary,Canada,51.0374,-114.0519,High,Low,Low,Moderate,Negligible,Low,High
+Carolina Hurricanes,PNC Arena,Raleigh,USA,35.8033,-78.7219,Low,Negligible,Negligible,Low,Low,Low,Low
+Chicago Blackhawks,United Center,Chicago,USA,41.8807,-87.6742,High,Low,Negligible,Low,Negligible,Low,High
+Colorado Avalanche,Ball Arena,Denver,USA,39.7487,-105.0077,Low,Moderate,Low,Low,Negligible,Low,Moderate
+Columbus Blue Jackets,Nationwide Arena,Columbus,USA,39.9692,-83.0061,Moderate,Negligible,Negligible,Low,Negligible,Low,Moderate
+Dallas Stars,American Airlines Center,Dallas,USA,32.7905,-96.8103,Negligible,Moderate,Low,Moderate,Low,Moderate,Moderate
+Detroit Red Wings,Little Caesars Arena,Detroit,USA,42.341,-83.0553,High,Low,Negligible,High,Negligible,Low,High
+Edmonton Oilers,Rogers Place,Edmonton,Canada,53.5469,-113.4978,High,Moderate,Low,Low,Negligible,Low,High
+Florida Panthers,Amerant Bank Arena,Sunrise,USA,26.1585,-80.3255,Negligible,Negligible,High,High,High,Low,High
+Los Angeles Kings,Crypto.com Arena,Los Angeles,USA,34.043,-118.2673,Negligible,High,High,Low,Low,Moderate,High
+Minnesota Wild,Xcel Energy Center,St. Paul,USA,44.9447,-93.1017,High,Negligible,Negligible,Low,Negligible,Low,High
+Montreal Canadiens,Bell Centre,Montreal,Canada,45.4961,-73.5693,High,Low,Negligible,Moderate,Negligible,Low,High
+Nashville Predators,Bridgestone Arena,Nashville,USA,36.1593,-86.7787,Low,Negligible,Negligible,Low,Negligible,Low,Low
+New Jersey Devils,Prudential Center,Newark,USA,40.7336,-74.171,Moderate,Low,Negligible,Low,Low,Low,Moderate
+New York Islanders,UBS Arena,Elmont,USA,40.723,-73.591,Moderate,Low,Negligible,Low,Low,Low,Moderate
+New York Rangers,Madison Square Garden,New York,USA,40.7505,-73.9934,Low,Low,Negligible,Low,Low,Low,Low
+Ottawa Senators,Canadian Tire Centre,Ottawa,Canada,45.2969,-75.927,High,Low,Negligible,Low,Negligible,Low,High
+Philadelphia Flyers,Wells Fargo Center,Philadelphia,USA,39.9012,-75.172,Moderate,Low,Negligible,Low,Low,Low,Moderate
+Pittsburgh Penguins,PPG Paints Arena,Pittsburgh,USA,40.4394,-79.9892,Moderate,Low,Negligible,Low,Negligible,Low,Moderate
+San Jose Sharks,SAP Center,San Jose,USA,37.3327,-121.9013,Negligible,Negligible,Low,Low,Negligible,Moderate,Moderate
+Seattle Kraken,Climate Pledge Arena,Seattle,USA,47.6221,-122.354,Negligible,Low,Low,Low,Negligible,Low,Low
+St. Louis Blues,Enterprise Center,St. Louis,USA,38.6266,-90.2026,Moderate,Low,Negligible,Low,Negligible,Low,Moderate
+Tampa Bay Lightning,Amalie Arena,Tampa,USA,27.9427,-82.4518,Negligible,Low,Low,High,High,Low,High
+Toronto Maple Leafs,Scotiabank Arena,Toronto,Canada,43.6435,-79.3791,High,Negligible,Negligible,Moderate,Negligible,Low,High
+Utah Mammoth,Delta Center,Salt Lake City,USA,40.7683,-111.9011,High,Moderate,High,Low,Negligible,Moderate,High
+Vancouver Canucks,Rogers Arena,Vancouver,Canada,49.2778,-123.1088,Low,Moderate,Negligible,Low,Negligible,Low,Moderate
+Vegas Golden Knights,T-Mobile Arena,Las Vegas,USA,36.1028,-115.1783,Negligible,Low,Low,Low,Negligible,Moderate,Moderate
+Washington Capitals,Capital One Arena,Washington,USA,38.8981,-77.0209,Low,Low,Negligible,Low,Low,Low,Low
+Winnipeg Jets,Canada Life Centre,Winnipeg,Canada,49.8926,-97.1435,High,Moderate,Low,Moderate,Low,Moderate,High
