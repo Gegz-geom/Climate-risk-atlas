@@ -47,6 +47,28 @@ const map = new mapboxgl.Map({
 });
 map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), "top-right");
 
+class HomeControl {
+  onAdd(mapInstance) {
+    this._map = mapInstance;
+    this._container = document.createElement("div");
+    this._container.className = "mapboxgl-ctrl mapboxgl-ctrl-group";
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "home-ctrl-btn";
+    btn.setAttribute("aria-label", "Reset view");
+    btn.title = "Reset view";
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-5a1 1 0 0 1 1-1h0a1 1 0 0 1 1 1v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V9.5"/></svg>`;
+    btn.addEventListener("click", () => resetView());
+    this._container.appendChild(btn);
+    return this._container;
+  }
+  onRemove() {
+    this._container.parentNode.removeChild(this._container);
+    this._map = undefined;
+  }
+}
+map.addControl(new HomeControl(), "top-right");
+
 map.on("load", () => {
   addTerrainAndBuildings();
   boot();
@@ -176,6 +198,14 @@ function setLeague(lg) {
   );
   buildHazardChips();
   document.getElementById("drawerTitle").textContent = `${lg} Venues`;
+
+  const input = document.getElementById("searchInput");
+  if (input) {
+    input.value = "";
+    input.closest(".search-box").classList.remove("has-value");
+    document.getElementById("searchResults").classList.remove("open");
+  }
+
   render();
 }
 
@@ -183,6 +213,7 @@ function setLeague(lg) {
 // CONTROLS
 // ---------------------------------------------------------------
 function bindControls() {
+  bindSearch();
   segButtons("thresholdSeg", v => { state.threshold = v; render(); });
   segButtons("minHazardSeg", v => { state.minHazards = v; render(); });
   segButtons("viewSeg", v => { state.view = v; applyView(); });
@@ -199,10 +230,90 @@ function bindControls() {
   });
   document.getElementById("btnExportPNG").addEventListener("click", exportPNG);
   document.getElementById("btnExportData").addEventListener("click", exportData);
-  document.getElementById("btnHome").addEventListener("click", resetView);
 
   map.on("move", updateZoomCaption);
   updateZoomCaption();
+}
+
+function bindSearch() {
+  const input = document.getElementById("searchInput");
+  const box = input.closest(".search-box");
+  const results = document.getElementById("searchResults");
+  const clearBtn = document.getElementById("searchClear");
+
+  function runSearch() {
+    const q = input.value.trim().toLowerCase();
+    box.classList.toggle("has-value", q.length > 0);
+    if (!q) { results.classList.remove("open"); results.innerHTML = ""; return; }
+
+    const teams = state.allData[state.league].teams;
+    const matches = teams.filter(t =>
+      t.franchise.toLowerCase().includes(q) ||
+      t.facility.toLowerCase().includes(q) ||
+      t.city.toLowerCase().includes(q)
+    ).slice(0, 8);
+
+    if (matches.length === 0) {
+      results.innerHTML = `<div class="search-no-results">No matches in ${state.league}</div>`;
+    } else {
+      results.innerHTML = matches.map((t, i) => {
+        const c = RISK_COLOR[t.peakRisk] || "#999";
+        return `
+          <div class="search-result-item${i === 0 ? ' hi' : ''}" data-idx="${i}">
+            <div class="search-result-name">${t.franchise}</div>
+            <div class="search-result-meta"><span class="peak-dot" style="background:${c}"></span>${t.facility} · ${t.city}</div>
+          </div>`;
+      }).join("");
+      [...results.querySelectorAll(".search-result-item")].forEach((el, i) => {
+        el.addEventListener("mousedown", (e) => {
+          e.preventDefault();
+          selectSearchResult(matches[i]);
+        });
+      });
+    }
+    results.classList.add("open");
+  }
+
+  function selectSearchResult(team) {
+    openPopup(team);
+    input.value = team.franchise;
+    box.classList.remove("has-value");
+    results.classList.remove("open");
+    input.blur();
+    if (window.innerWidth <= 900) document.getElementById("controlRail").classList.remove("open");
+  }
+
+  input.addEventListener("input", runSearch);
+  input.addEventListener("focus", () => { if (input.value.trim()) runSearch(); });
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const first = results.querySelector(".search-result-item");
+      if (first) {
+        const q = input.value.trim().toLowerCase();
+        const teams = state.allData[state.league].teams;
+        const matches = teams.filter(t =>
+          t.franchise.toLowerCase().includes(q) ||
+          t.facility.toLowerCase().includes(q) ||
+          t.city.toLowerCase().includes(q)
+        );
+        if (matches[0]) selectSearchResult(matches[0]);
+      }
+    } else if (e.key === "Escape") {
+      input.value = "";
+      box.classList.remove("has-value");
+      results.classList.remove("open");
+      input.blur();
+    }
+  });
+  clearBtn.addEventListener("click", () => {
+    input.value = "";
+    box.classList.remove("has-value");
+    results.classList.remove("open");
+    input.focus();
+  });
+  document.addEventListener("click", (e) => {
+    if (!box.contains(e.target)) results.classList.remove("open");
+  });
 }
 
 function segButtons(id, cb) {

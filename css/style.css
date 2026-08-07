@@ -221,6 +221,64 @@ ul{ list-style:none; }
 }
 .segmented button:not(.active):hover{ color: var(--paper-dim); }
 
+.search-group{ position:relative; }
+.search-box{ position:relative; }
+.search-icon{
+  position:absolute; left:11px; top:50%; transform:translateY(-50%);
+  color: var(--ink-600); pointer-events:none;
+}
+.search-box input{
+  width:100%;
+  background: var(--ink-850);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 32px 9px 32px;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  color: var(--paper);
+  outline:none;
+  transition: border-color .16s var(--ease), background .16s var(--ease);
+}
+.search-box input::placeholder{ color: var(--ink-600); }
+.search-box input:focus{ border-color: var(--brand-line); background: var(--ink-800); }
+.search-clear{
+  position:absolute; right:8px; top:50%; transform:translateY(-50%);
+  width:18px; height:18px;
+  display:none;
+  align-items:center; justify-content:center;
+  color: var(--ink-600);
+  border-radius:50%;
+}
+.search-clear:hover{ color: var(--paper); background: var(--ink-700); }
+.search-box.has-value .search-clear{ display:flex; }
+
+.search-results{
+  position:absolute;
+  top: calc(100% + 6px);
+  left:0; right:0;
+  background: var(--ink-850);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+  max-height: 280px;
+  overflow-y:auto;
+  z-index: 45;
+  display:none;
+}
+.search-results.open{ display:block; }
+.search-result-item{
+  padding: 9px 12px;
+  cursor:pointer;
+  border-bottom: 1px solid var(--line-soft);
+  transition: background .12s var(--ease);
+}
+.search-result-item:last-child{ border-bottom:none; }
+.search-result-item:hover, .search-result-item.hi{ background: var(--brand-dim); }
+.search-result-name{ font-size:12.5px; font-weight:600; color: var(--paper); }
+.search-result-meta{ font-size:10.5px; color: var(--paper-faint); margin-top:2px; display:flex; align-items:center; gap:6px; }
+.search-result-meta .peak-dot{ width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+.search-no-results{ padding: 14px 12px; font-size:12px; color: var(--ink-600); text-align:center; }
+
 .rail-legend{
   padding: 16px 20px 20px;
   border-top: 1px solid var(--line);
@@ -271,20 +329,16 @@ ul{ list-style:none; }
   pointer-events:none;
 }
 
-.home-btn{
-  position:absolute;
-  top: 110px; right: 12px;
-  width: 30px; height: 30px;
+.home-ctrl-btn{
+  width: 29px; height: 29px;
   display:flex; align-items:center; justify-content:center;
-  background: var(--ink-900);
-  border: 1px solid var(--line);
-  border-radius: 4px;
+  background: transparent;
+  border: none;
   color: var(--paper-dim);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-  z-index: 6;
-  transition: color .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease);
+  cursor:pointer;
+  transition: color .15s var(--ease), background .15s var(--ease);
 }
-.home-btn:hover{ color: var(--brand); border-color: var(--brand-line); background: var(--brand-dim); }
+.home-ctrl-btn:hover{ color: var(--brand); background: var(--brand-dim); }
 
 /* ===================== MARKERS (tapering spikes) ===================== */
 .risk-marker{
