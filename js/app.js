@@ -43,7 +43,8 @@ const map = new mapboxgl.Map({
   pitch: DEFAULT_VIEW.pitch,
   bearing: DEFAULT_VIEW.bearing,
   attributionControl: true,
-  antialias: true
+  antialias: true,
+  preserveDrawingBuffer: true
 });
 map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), "top-right");
 
@@ -410,6 +411,8 @@ function render() {
     const marker = new mapboxgl.Marker({ element: el, anchor: "bottom" })
       .setLngLat([team.lon, team.lat])
       .addTo(map);
+    marker.team = team;
+    marker.isActive = ok;
     el.addEventListener("click", (e) => {
       e.stopPropagation();
       openPopup(team);
@@ -604,12 +607,82 @@ function renderDrawer() {
 // ---------------------------------------------------------------
 function exportPNG() {
   map.once("idle", () => {
+    const mapCanvas = map.getCanvas();
+    const dpr = window.devicePixelRatio || 1;
+    const w = mapCanvas.width;
+    const h = mapCanvas.height;
+
+    const out = document.createElement("canvas");
+    out.width = w;
+    out.height = h;
+    const ctx = out.getContext("2d");
+    ctx.drawImage(mapCanvas, 0, 0, w, h);
+
+    state.markers.forEach(marker => drawSpikeOnCanvas(ctx, marker, dpr, w, h));
+
     const link = document.createElement("a");
     link.download = `climate-risk-atlas-${state.league.toLowerCase()}.png`;
-    link.href = map.getCanvas().toDataURL("image/png");
+    link.href = out.toDataURL("image/png");
     link.click();
   });
   map.triggerRepaint();
+}
+
+function drawSpikeOnCanvas(ctx, marker, dpr, canvasW, canvasH) {
+  const team = marker.team;
+  if (!team) return;
+  const pt = map.project([team.lon, team.lat]);
+  const x = pt.x * dpr;
+  const y = pt.y * dpr;
+  if (x < -60 * dpr || x > canvasW + 60 * dpr || y < -120 * dpr || y > canvasH + 60 * dpr) return;
+
+  const qualifying = team.hazards.filter(hazardPasses);
+  ctx.save();
+  ctx.globalAlpha = marker.isActive ? 1 : 0.16;
+
+  if (qualifying.length === 0) {
+    ctx.beginPath();
+    ctx.fillStyle = "#3a4249";
+    ctx.strokeStyle = "rgba(255,255,255,0.15)";
+    ctx.lineWidth = 1 * dpr;
+    ctx.arc(x, y, 3 * dpr, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+    return;
+  }
+
+  const w = SPIKE_W * dpr;
+  const gap = SPIKE_GAP * dpr;
+  const totalW = qualifying.length * (w + gap) - gap;
+  let startX = x - totalW / 2;
+
+  // ground shadow pool
+  ctx.beginPath();
+  ctx.ellipse(x, y + 3 * dpr, Math.max(10 * dpr, totalW / 2 + 4 * dpr), 3.2 * dpr, 0, 0, Math.PI * 2);
+  ctx.fillStyle = "rgba(0,0,0,0.4)";
+  ctx.fill();
+
+  qualifying.forEach(hz => {
+    const heightPx = (MIN_SPIKE + (hz.score / 3) * (MAX_SPIKE - MIN_SPIKE)) * dpr;
+    const color = RISK_COLOR[hz.level] || "#8a8f96";
+    const grad = ctx.createLinearGradient(0, y - heightPx, 0, y);
+    grad.addColorStop(0, lighten(color, 38));
+    grad.addColorStop(0.45, color);
+    grad.addColorStop(1, darken(color, 22));
+
+    ctx.beginPath();
+    ctx.moveTo(startX + w / 2, y - heightPx);
+    ctx.lineTo(startX + w, y);
+    ctx.lineTo(startX, y);
+    ctx.closePath();
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    startX += w + gap;
+  });
+
+  ctx.restore();
 }
 
 function exportData() {
